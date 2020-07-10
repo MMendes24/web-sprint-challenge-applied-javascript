@@ -23,9 +23,10 @@ axios.get(tabData)
     tabWeb.forEach( (tab) => {
         tab = document.createElement('div')
         tab.classList.add('tab')
-        tab.textContent = value.data.topics
+        tab.textContent = tabWeb[0]
         tabTopics.appendChild(tab)
     })
+
 })    
 .catch( () => {
     console.log("No, New Orleans, you went dark.")

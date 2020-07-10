@@ -21,20 +21,41 @@
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 const articleData = 'https://lambda-times-backend.herokuapp.com/articles'
+console.log(articleData)
 
 function articleMaker (dataObj) {
 axios.get(dataObj)
-.then((dataObj) => {
+.then( (value) => {
+  //step one, instantiate
+    const cardsContainer = document.querySelector('.cards-container')
     const card = document.createElement('div')
+    card.classList.add('card')
     const headline = document.createElement('div')
-    const author = document.createElement('div')
-    const imgContainer = document.createElement('div')
-    const imgAuth = document.createElement('img')
-    const name = document.createElement('name')
+    const headlineText = value.data.articles.bootstrap[0].headline
+    headline.textContent = headlineText
+    headline.classList.add('headline')
 
+    const author = document.createElement('div')
+    author.classList.add('author')
+
+    const imgContainer = document.createElement('div')
+    imgContainer.classList.add('img-container')
+
+    const imgAuth = document.createElement('img')
+    const name = document.createElement('span')
+
+    //step two, appending
+    cardsContainer.appendChild(card)
+    card.appendChild(headline)
+    card.appendChild(author)
+    author.appendChild(imgContainer)
+    imgContainer.appendChild(imgAuth)
+    card.appendChild(name)
+
+
+    return console.log(card)
 })
 .catch()
 }
 
-articleMaker(articleData)
-console.log(articleMaker())
+console.log(articleMaker(articleData))
